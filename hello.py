@@ -5,6 +5,15 @@ Tutorial from Codemy.com on YouTube
 $env:FLASK_ENV="development" (enables development env)
 $env:FLASK_DEBUG="True" (enables live feedback from source code changes)
 $env:FLASK_APP="hello.py" (tells flask which file is the main app)
+
+Jinja keywords:
+    safe        (Don't strip HTML tags)
+    capitalize
+    lower
+    upper
+    title
+    trim        (Trim trailing whitespace)
+    striptags   (Strip HTML tags)
 """
 
 from flask import Flask, render_template
@@ -16,11 +25,13 @@ app = Flask(__name__)
 @app.route('/')
 
 def index():
-    return "<h1>Hello World!</h1>"
-
-
+    stuff = 'This is <strong>Bold</strong> text'
+    pizza_toppings = ['cheese', 'pepperoni', 'pineapple']
+    return render_template('index.html'
+                           , stuff=stuff
+                           , pizza_toppings=pizza_toppings)
 
 @app.route('/user/<name>')
 
 def user(name):
-    return f"<h1>Bye, {name}</h1>"
+    return render_template('user.html', username=name)

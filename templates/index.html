@@ -1,0 +1,20 @@
+<h1>Hello World!</h1>
+
+<p>This is my first webpage!!!</p>
+
+<p>{{ stuff | safe }}</p>
+<p>{{ stuff | striptags | title }}</p>
+
+<h3>Favorite Pizza Toppings</h3>
+
+{% for topping in pizza_toppings %}
+    {% if topping == 'pineapple' %}
+        {{ topping | capitalize }} : ) <br/>
+    {% else %}
+        {{ topping | capitalize }}  <br/>
+    {% endif%}
+{% endfor %}
+
+<br/><br/>
+
+{{ pizza_toppings.0 | capitalize }}
